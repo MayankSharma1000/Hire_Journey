@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+
+# Mac OS files
+.DS_Store
+
+# Logs
+*.log
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+tmp/
+temp/
