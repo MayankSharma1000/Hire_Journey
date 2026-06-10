@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Makes the app responsive on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hire Journey</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app">
+
+    <!-- ================= AUTH SECTION ================= -->
+    <section id="authSection" class="auth-page">
+      <div class="auth-left">
+        <h1>
+          Hire<span>Journey</span>
+        </h1>
+    
+        <p class="auth-tagline">
+          Your Personal Job Application CRM
+        </p>
+    
+        <p class="auth-description">
+          Track applications. Manage interviews. Never miss a follow-up. Land offers faster.
+        </p>
+    
+        <div class="auth-features">
+          <p>✅ Kanban Board to visualize your progress</p>
+          <p>✅ Follow-up reminders with Google Calendar sync</p>
+          <p>✅ Track salary, notes, status and interview details</p>
+          <p>✅ Export your job search data anytime</p>
+        </div>
+    
+        <div class="auth-stats-preview">
+          <div>
+            <h2>37</h2>
+            <p>Applications Tracked</p>
+          </div>
+    
+          <div>
+            <h2>8</h2>
+            <p>Interviews Managed</p>
+          </div>
+    
+          <div>
+            <h2>2</h2>
+            <p>Offers Received</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="auth-right">
+        <div class="auth-card">
+          <h2>Welcome Back!</h2>
+          <p>Login to continue your hiring journey.</p>
+    
+          <input id="username" type="text" placeholder="Username or Email" />
+          <input id="password" type="password" placeholder="Password" />
+    
+          <div class="button-row">
+            <button onclick="registerUser()">Register</button>
+            <button onclick="loginUser()">Login</button>
+          </div>
+    
+          <p id="authMessage"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DASHBOARD SECTION ================= -->
+    <section id="dashboard" class="dashboard hidden">
+
+      <!-- Header actions -->
+      <header class="dashboard-header">
+        <div>
+          <h1>Application Dashboard</h1>
+          <p id="welcomeText"></p>
+        </div>
+
+        <div class="header-actions">
+          <button type="button" onclick="connectGoogleCalendar()">Connect Calendar</button>
+          <button type="button" onclick="toggleDarkMode()">Dark Mode</button>
+          <button type="button" onclick="exportCSV()">Export CSV</button>
+          <button type="button" class="logout-btn" onclick="logoutUser()">
+            Logout
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard stats -->
+      <section class="stats">
+        <div class="stat-card">
+          <h3>Total</h3>
+          <p id="totalJobs">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Interviews</h3>
+          <p id="interviewJobs">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Offers</h3>
+          <p id="offerJobs">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Average Salary</h3>
+          <p id="averageSalary">₹0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Highest Salary</h3>
+          <p id="highestSalary">₹0</p>
+        </div>
+      </section>
+
+      <!-- Follow-up reminder cards -->
+      <section class="reminder-section">
+        <h2>🔔 Follow-up Reminders</h2>
+        <div id="reminderList" class="reminder-list"></div>
+      </section>
+
+      <!-- Kanban board -->
+      <section class="kanban-section">
+        <h2>▦ Kanban Board</h2>
+
+        <div class="kanban-board">
+          <div class="kanban-column">
+            <h3>Applied</h3>
+            <div id="appliedColumn"></div>
+          </div>
+
+          <div class="kanban-column">
+            <h3>Interview</h3>
+            <div id="interviewColumn"></div>
+          </div>
+
+          <div class="kanban-column">
+            <h3>Rejected</h3>
+            <div id="rejectedColumn"></div>
+          </div>
+
+          <div class="kanban-column">
+            <h3>Offer</h3>
+            <div id="offerColumn"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Job application form -->
+      <form id="jobForm" class="job-form">
+
+        <input id="company" type="text" placeholder="Company" required />
+        <input id="role" type="text" placeholder="Role" required />
+        <input id="salary" type="number" placeholder="Salary" required />
+
+        <select id="status">
+          <option value="Applied">Applied</option>
+          <option value="Interview">Interview</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Offer">Offer</option>
+        </select>
+
+        <div class="input-group">
+          <label for="date">Application Date</label>
+          <input id="date" type="date" required />
+          <small>Date when you applied or added this job.</small>
+        </div>
+
+        <div class="input-group">
+          <label for="followUpDate">Follow-up Date</label>
+          <input id="followUpDate" type="date" />
+          <small>Date when you want to contact HR/recruiter again.</small>
+        </div>
+
+        <textarea id="notes" placeholder="Notes"></textarea>
+
+        <button type="submit" id="submitBtn">Add Job</button>
+      </form>
+
+      <!-- Search, filter, and sort controls -->
+      <section class="filters">
+        <input id="searchInput" type="text" placeholder="Search by company or role..." />
+
+        <select id="filterStatus">
+          <option value="All">All Status</option>
+          <option value="Applied">Applied</option>
+          <option value="Interview">Interview</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Offer">Offer</option>
+        </select>
+
+        <select id="sortBy">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="salaryHigh">Salary High to Low</option>
+          <option value="salaryLow">Salary Low to High</option>
+        </select>
+      </section>
+
+      <!-- Job applications table -->
+      <section class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Role</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Applied</th>
+              <th>Follow Up</th>
+              <th>Notes</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="jobTableBody"></tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+
+  <!-- Main JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

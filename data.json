@@ -1,0 +1,56 @@
+{
+    "users": [
+      {
+        "id": 1780639807415,
+        "username": "may123",
+        "password": "may123",
+        "googleTokens": null
+      }
+    ],
+    "jobs": [
+      {
+        "id": 1780639841286,
+        "userId": 1780639807415,
+        "company": "Google",
+        "role": "Dev",
+        "salary": 27000,
+        "status": "Offer",
+        "date": "2026-12-21",
+        "followUpDate": "2026-06-25",
+        "notes": ""
+      },
+      {
+        "id": 1780653557868,
+        "userId": 1780639807415,
+        "company": "Apple",
+        "role": "Developer",
+        "salary": 70000,
+        "status": "Interview",
+        "date": "2026-06-18",
+        "followUpDate": "",
+        "notes": "Do revise swift notes."
+      },
+      {
+        "id": 1780654790605,
+        "userId": 1780639807415,
+        "company": "Samsung",
+        "role": "SD1",
+        "salary": 50000,
+        "status": "Interview",
+        "date": "2026-05-12",
+        "followUpDate": "2026-06-18",
+        "notes": ""
+      },
+      {
+        "id": 1780821950210,
+        "userId": 1780639807415,
+        "company": "Trident",
+        "role": "Software Developer",
+        "salary": 50000,
+        "status": "Interview",
+        "date": "2026-06-07",
+        "followUpDate": "2026-06-12",
+        "notes": "Prepare coding questions."
+      }
+    ]
+  }

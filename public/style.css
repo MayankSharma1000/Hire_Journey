@@ -1,0 +1,740 @@
+/* =========================================================
+   1. GLOBAL RESET
+   Removes default browser spacing and keeps sizing predictable.
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Makes full-width layouts behave properly */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   2. BODY BASE STYLE
+   Default app background for dashboard pages.
+========================================================= */
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #1e293b;
+  background: linear-gradient(135deg, #dbeafe, #f8fafc);
+}
+
+/* Dark mode dashboard background */
+body.dark {
+  color: #e2e8f0;
+  background: linear-gradient(135deg, #020617, #1e293b);
+}
+
+/* =========================================================
+   3. MAIN APP WRAPPER
+   Full width is needed so login page becomes edge-to-edge.
+========================================================= */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Utility class to hide sections */
+.hidden {
+  display: none;
+}
+
+/* Dashboard content should still remain centered */
+.dashboard {
+  width: 94%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* =========================================================
+   4. COMMON CARD DESIGN
+   Shared styling for dashboard cards and sections.
+========================================================= */
+
+.card,
+.table-card,
+.stat-card,
+.reminder-section,
+.kanban-section {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode cards */
+body.dark .card,
+body.dark .table-card,
+body.dark .stat-card,
+body.dark .reminder-section,
+body.dark .kanban-section {
+  background: #0f172a;
+}
+
+/* =========================================================
+   5. FORM ELEMENTS
+   Common input, select, textarea and button styling.
+========================================================= */
+
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Textarea size control */
+textarea {
+  min-height: 45px;
+  resize: vertical;
+}
+
+/* Default button */
+button {
+  color: #ffffff;
+  background: #2563eb;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Button hover */
+button:hover {
+  background: #1d4ed8;
+}
+
+/* Two-column button layout */
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* =========================================================
+   6. LOGIN / AUTHENTICATION PAGE
+   Full-screen SaaS-style landing page.
+========================================================= */
+
+.auth-page {
+  width: 100vw;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+
+  padding: 70px 8%;
+
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.4),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(124, 58, 237, 0.42),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #08111f 45%,
+      #1e1b4b 100%
+    );
+}
+
+/* Left marketing side */
+.auth-left {
+  max-width: 720px;
+}
+
+/* Product name */
+.auth-left h1 {
+  margin-bottom: 12px;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* Blue part of HireJourney */
+.auth-left h1 span {
+  color: #38bdf8;
+}
+
+/* Tagline below product name */
+.auth-tagline {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Short product description */
+.auth-description {
+  max-width: 560px;
+  margin-bottom: 30px;
+  color: #cbd5e1;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Feature list wrapper */
+.auth-features {
+  display: grid;
+  gap: 13px;
+  margin-bottom: 36px;
+}
+
+/* Single feature line */
+.auth-features p {
+  color: #e2e8f0;
+  font-size: 16px;
+}
+
+/* Preview stats below feature list */
+.auth-stats-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 680px;
+}
+
+/* Single preview stat card */
+.auth-stats-preview div {
+  padding: 24px 20px;
+  text-align: center;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  backdrop-filter: blur(14px);
+}
+
+/* Preview number */
+.auth-stats-preview h2 {
+  margin-bottom: 6px;
+  color: #38bdf8;
+  font-size: 34px;
+}
+
+/* Preview label */
+.auth-stats-preview p {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+/* Right side login area */
+.auth-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login card */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px;
+  text-align: center;
+
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 24px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* Login heading */
+.auth-card h2 {
+  margin-bottom: 8px;
+  font-size: 29px;
+}
+
+/* Login subtitle */
+.auth-card > p {
+  margin-bottom: 25px;
+  color: #64748b;
+}
+
+/* Login error/success message */
+#authMessage,
+.message {
+  margin-top: 12px;
+  text-align: center;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* =========================================================
+   7. DASHBOARD HEADER
+========================================================= */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Dashboard title spacing */
+.dashboard-header h1 {
+  margin-bottom: 6px;
+}
+
+/* Header button group */
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Logout and delete buttons */
+.logout-btn,
+.delete-btn {
+  background: #dc2626;
+}
+
+/* Logout and delete hover */
+.logout-btn:hover,
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* Edit button */
+.edit-btn {
+  margin-bottom: 6px;
+  background: #f59e0b;
+}
+
+/* Edit hover */
+.edit-btn:hover {
+  background: #d97706;
+}
+
+/* Calendar button */
+.calendar-btn,
+.calendar-reminder-btn {
+  background: #16a34a;
+}
+
+/* Calendar hover */
+.calendar-btn:hover,
+.calendar-reminder-btn:hover {
+  background: #15803d;
+}
+
+/* Reminder card calendar button size */
+.calendar-reminder-btn {
+  width: auto;
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   8. STATS CARDS
+========================================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+/* Individual stats card */
+.stat-card {
+  padding: 22px;
+  text-align: center;
+}
+
+/* Stats title */
+.stat-card h3 {
+  color: #64748b;
+}
+
+/* Stats number */
+.stat-card p {
+  margin-top: 8px;
+  color: #2563eb;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* =========================================================
+   9. FOLLOW-UP REMINDERS
+========================================================= */
+
+.reminder-section {
+  padding: 22px;
+  margin-bottom: 42px;
+}
+
+/* Reminder heading */
+.reminder-section h2 {
+  margin-bottom: 26px;
+  font-size: 26px;
+}
+
+/* Reminder card list */
+.reminder-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* Single reminder card */
+.reminder-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px 22px;
+
+  color: #1e293b;
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+
+  border-left: 6px solid #f59e0b;
+  border-radius: 14px;
+
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15);
+}
+
+/* Reminder icon box */
+.reminder-icon {
+  min-width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* Reminder job title */
+.reminder-content h4 {
+  margin-bottom: 6px;
+  color: #f59e0b;
+}
+
+/* Reminder text */
+.reminder-content p {
+  margin: 4px 0;
+  color: #334155;
+  font-size: 14px;
+}
+
+/* Reminder date highlight */
+.reminder-content strong {
+  color: #2563eb;
+}
+
+/* Days left text */
+.reminder-status {
+  color: #16a34a !important;
+  font-weight: bold;
+}
+
+/* Dark reminder card */
+body.dark .reminder-card {
+  color: #e2e8f0;
+  background: linear-gradient(135deg, #111827, #1e293b);
+  border-left-color: #f59e0b;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.12);
+}
+
+/* Dark reminder icon */
+body.dark .reminder-icon {
+  background: rgba(245, 158, 11, 0.2);
+}
+
+/* Dark reminder paragraph */
+body.dark .reminder-content p {
+  color: #cbd5e1;
+}
+
+/* Dark reminder date */
+body.dark .reminder-content strong {
+  color: #60a5fa;
+}
+
+/* =========================================================
+   10. KANBAN BOARD
+========================================================= */
+
+.kanban-section {
+  padding: 22px;
+  margin-top: 16px;
+  margin-bottom: 36px;
+}
+
+/* Kanban title */
+.kanban-section h2 {
+  margin-bottom: 22px;
+  font-size: 26px;
+}
+
+/* Kanban columns wrapper */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Single kanban column */
+.kanban-column {
+  min-height: 220px;
+  padding: 18px;
+
+  background: #f1f5f9;
+  border-radius: 14px;
+}
+
+/* Dark kanban column */
+body.dark .kanban-column {
+  background: #1e293b;
+}
+
+/* Kanban column heading */
+.kanban-column h3 {
+  margin-bottom: 14px;
+}
+
+/* Single kanban job card */
+.kanban-card {
+  margin: 12px 0;
+  padding: 14px;
+
+  cursor: default;
+
+  background: #ffffff;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark kanban job card */
+body.dark .kanban-card {
+  background: #020617;
+}
+
+/* Kanban job title */
+.kanban-card h4 {
+  margin-bottom: 6px;
+}
+
+/* Kanban job text */
+.kanban-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================================
+   11. JOB FORM
+========================================================= */
+
+.job-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+
+  margin-top: 28px;
+  margin-bottom: 20px;
+  padding: 18px;
+
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark job form */
+body.dark .job-form {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+/* Notes field takes more space */
+.job-form textarea {
+  grid-column: span 3;
+}
+
+/* Date field group */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date labels */
+.input-group label {
+  margin-bottom: 4px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Date helper text */
+.input-group small {
+  margin-top: -4px;
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Dark date labels */
+body.dark .input-group label {
+  color: #e2e8f0;
+}
+
+/* Dark helper text */
+body.dark .input-group small {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   12. FILTERS
+========================================================= */
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   13. TABLE
+========================================================= */
+
+.table-card {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Table base */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table heading */
+th {
+  padding: 14px;
+  color: #ffffff;
+  background: #2563eb;
+}
+
+/* Table data */
+td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Row hover */
+tr:hover {
+  background: #f1f5f9;
+}
+
+/* Dark row hover */
+body.dark tr:hover {
+  background: #1e293b;
+}
+
+/* Status badge */
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+
+  color: #ffffff;
+  font-size: 13px;
+
+  border-radius: 20px;
+}
+
+/* Applied badge */
+.Applied {
+  background: #2563eb;
+}
+
+/* Interview badge */
+.Interview {
+  background: #f59e0b;
+}
+
+/* Rejected badge */
+.Rejected {
+  background: #dc2626;
+}
+
+/* Offer badge */
+.Offer {
+  background: #16a34a;
+}
+
+/* =========================================================
+   14. RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 900px) {
+  /* Login page becomes single column */
+  .auth-page {
+    grid-template-columns: 1fr;
+    padding: 35px 22px;
+  }
+
+  /* Smaller logo on mobile */
+  .auth-left h1 {
+    font-size: 42px;
+  }
+
+  /* Login stats stack vertically */
+  .auth-stats-preview {
+    grid-template-columns: 1fr;
+  }
+
+  /* Dashboard grids become single column */
+  .stats,
+  .job-form,
+  .filters,
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  /* Textarea no longer spans multiple columns */
+  .job-form textarea {
+    grid-column: span 1;
+  }
+
+  /* Header buttons stack */
+  .dashboard-header,
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Reminder card stacks cleanly */
+  .reminder-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
