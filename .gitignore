@@ -15,4 +15,4 @@ node_modules/
 
 # Temporary files
 tmp/
-temp/
+temp/.DS_Store
